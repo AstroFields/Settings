@@ -1,5 +1,6 @@
 {
     "name"        : "wcm/astrofields-settings",
+    "version"     : "0.1.0",
     "description" : "Settings Pages Extension for the AstroFields framework",
     "keywords"    : [ "wordpress", "forms", "fields" ],
     "homepage"    : "https://github.com/AstroFields/Settings",
@@ -13,7 +14,7 @@
     "support"     : {
         "issues" : "https://github.com/AstroFields/Settings/issues"
     },
-    "minimum-stability" : "stable",
+    "minimum-stability" : "dev",
     "require"     : {
         "php"             : ">=5.3",
         "wcm/astrofields" : "*"
