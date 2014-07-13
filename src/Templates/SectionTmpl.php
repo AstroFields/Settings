@@ -29,15 +29,9 @@ class TableCell implements TemplateInterface
 	{
 		foreach( $this->entities as $entity )
 		{
-			?>
-			<td>
-				<?php
-				$this->entities
-					->current()
-					->notify();
-				?>
-			</td>
-			<?php
+			$this->entities
+				->current()
+				->notify();
 		}
 	}
 }
