@@ -4,7 +4,7 @@ namespace WCM\AstroFields\Settings\Templates;
 
 use WCM\AstroFields\Core\Templates\TemplateInterface;
 
-class Table implements TemplateInterface
+class Cell implements TemplateInterface
 {
 	/** @type \SplPriorityQueue */
 	private $entities;
@@ -30,15 +30,13 @@ class Table implements TemplateInterface
 		foreach( $this->entities as $entity )
 		{
 			?>
-			<table class="form-table">
-				<tr>
-					<?php
-					$this->entities
-						->current()
-						->notify();
-					?>
-				</tr>
-			</table>
+			<td>
+				<?php
+				$this->entities
+					->current()
+					->notify();
+				?>
+			</td>
 			<?php
 		}
 	}
