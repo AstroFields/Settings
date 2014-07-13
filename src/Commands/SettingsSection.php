@@ -76,7 +76,6 @@ class SettingsSection implements \SplObserver, ContextAwareInterface
 				$type
 			);
 		}
-#var_dump( $GLOBALS['wp_settings_sections'] );
 	}
 
 	/**
@@ -100,7 +99,7 @@ class SettingsSection implements \SplObserver, ContextAwareInterface
 				'Foo',
 				array( $this->view, 'process' ),
 				$type,
-				'default'
+				$this->key
 			);
 		}
 
