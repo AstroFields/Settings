@@ -4,7 +4,7 @@ namespace WCM\AstroFields\Settings\Templates;
 
 use WCM\AstroFields\Core\Templates\TemplateInterface;
 
-class Cell implements TemplateInterface
+class TableCell implements TemplateInterface
 {
 	/** @type \SplPriorityQueue */
 	private $entities;
