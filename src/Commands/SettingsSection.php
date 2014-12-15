@@ -5,7 +5,6 @@ namespace WCM\AstroFields\Settings\Commands;
 use WCM\AstroFields\Core\Mediators\Entity;
 use WCM\AstroFields\Core\Commands\ContextAwareInterface;
 use WCM\AstroFields\Core\Templates\TemplateInterface;
-use WCM\AstroFields\Core\Views\ViewableInterface;
 use WCM\AstroFields\Settings\Views\SettingsSection as View;
 
 /**
@@ -29,19 +28,15 @@ class SettingsSection implements \SplObserver, ContextAwareInterface
 	/** @type string */
 	private $title = '';
 
-	/** @type ViewableInterface */
-	private $view;
-
 	/** @type \SplPriorityQueue */
 	private $receiver;
 
 	/** @type TemplateInterface */
 	private $template;
 
-	public function __construct()
+	public function __construct( TemplateInterface $template )
 	{
-		$this->view = new View;
-
+		$this->template = $template;
 		$this->receiver = new \SplPriorityQueue;
 		$this->receiver->setExtractFlags( \SplPriorityQueue::EXTR_DATA );
 	}
@@ -56,6 +51,7 @@ class SettingsSection implements \SplObserver, ContextAwareInterface
 		$this->key   = $data['key'];
 		$this->types = $data['type'];
 
+		# @TODO fix usage without external View
 		$this->view->setData( $this->receiver );
 		$this->view->setTemplate( $this->template );
 
@@ -72,7 +68,7 @@ class SettingsSection implements \SplObserver, ContextAwareInterface
 			add_settings_section(
 				$this->key,
 				$this->title,
-				array( $this->view, 'process' ),
+				array( $this->template, 'display' ),
 				$type
 			);
 		}
@@ -97,7 +93,7 @@ class SettingsSection implements \SplObserver, ContextAwareInterface
 			add_settings_field(
 				$command->getKey(),
 				'Foo',
-				array( $this->view, 'process' ),
+				array( $this->template, 'display' ),
 				$type,
 				$this->key
 			);

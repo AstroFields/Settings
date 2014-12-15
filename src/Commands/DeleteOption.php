@@ -4,9 +4,7 @@ namespace WCM\AstroFields\Settings\Commands;
 
 use WCM\AstroFields\Core\Commands\ContextAwareInterface;
 
-class DeleteOption
-	implements \SplObserver,
-			   ContextAwareInterface
+class DeleteOption implements \SplObserver, ContextAwareInterface
 {
 	/** @type string */
 	private $context = 'pre_set_transient_settings_errors';
@@ -20,7 +18,7 @@ class DeleteOption
 	 */
 	public function update( \SplSubject $subject, Array $data = null )
 	{
-		$this->data   = $data;
+		$this->data = $data;
 
 		if (
 			empty( $_POST[ $data['key'] ] )

@@ -4,9 +4,7 @@ namespace WCM\AstroFields\Settings\Commands;
 
 use WCM\AstroFields\Core\Commands\ContextAwareInterface;
 
-class SaveOption
-	implements \SplObserver,
-			   ContextAwareInterface
+class SaveOption implements \SplObserver, ContextAwareInterface
 {
 	/** @type string */
 	private $context = 'pre_set_transient_settings_errors';
@@ -58,7 +56,7 @@ class SaveOption
 			return;
 
 		add_settings_error(
-			$_POST[ $this->data['key'] ],
+			esc_attr( $_POST[ $this->data['key'] ] ),
 			$this->data['key'],
 			sprintf(
 				'Invalid value for %s',
